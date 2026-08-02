@@ -1,0 +1,1 @@
+# Zsafe ProGuard rules

@@ -1,0 +1,10 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+
+# Keystore & secrets — jangan commit
+*.jks
+*.keystore
+keystore.properties

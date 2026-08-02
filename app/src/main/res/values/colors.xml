@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zsafe_teal">#0F9D8F</color>
+    <color name="zsafe_teal_dark">#0C7F74</color>
+    <color name="zsafe_bg">#F4F7F6</color>
+    <color name="zsafe_ink">#14332F</color>
+</resources>
