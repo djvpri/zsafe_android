@@ -15,14 +15,14 @@ val keystoreProps = Properties().apply {
 
 android {
     namespace = "com.zshield.android"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.zshield.android"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 4
-        versionName = "0.4.0"
+        targetSdk = 35
+        versionCode = 5
+        versionName = "0.4.1"
     }
 
     signingConfigs {
