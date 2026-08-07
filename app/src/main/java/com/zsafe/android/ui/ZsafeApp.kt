@@ -22,11 +22,13 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.platform.LocalContext
 import com.zsafe.android.data.SettingsStore
 import com.zsafe.android.ui.dashboard.DashboardScreen
 import com.zsafe.android.ui.linkcheck.LinkCheckScreen
+import com.zsafe.android.ui.scan.ScanScreen
 import com.zsafe.android.ui.settings.SettingsScreen
 
 /** Root composable: bottom nav + screens + handles inbound link intent. */
@@ -34,6 +36,8 @@ import com.zsafe.android.ui.settings.SettingsScreen
 fun ZsafeApp(inboundUrl: String?) {
     val context = LocalContext.current
     val navController = rememberNavController()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
     var interceptedUrl by rememberSaveable { mutableStateOf(inboundUrl) }
 
     Scaffold(
@@ -47,7 +51,7 @@ fun ZsafeApp(inboundUrl: String?) {
                 )
                 items.forEach { item ->
                     NavigationBarItem(
-                        selected = false,
+                        selected = currentRoute == item.route,
                         onClick = { navController.navigate(item.route) },
                         icon = { Icon(item.icon, contentDescription = item.label) },
                         label = { Text(item.label) },
@@ -62,7 +66,7 @@ fun ZsafeApp(inboundUrl: String?) {
             modifier = Modifier.padding(innerPadding),
         ) {
             composable("home") { DashboardScreen() }
-            composable("scan") { Text("Layar pindai — WIP") }
+            composable("scan") { ScanScreen(context = context) }
             composable("link") {
                 // If an inbound URL arrived via Intent, scan it here.
                 LinkCheckScreen(url = interceptedUrl, context = context)
