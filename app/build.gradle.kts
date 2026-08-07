@@ -1,7 +1,16 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+}
+
+// Keystore produksi: app/keystore.properties (TAK di git). Absen -> fallback debug signing.
+val keystoreProps = Properties().apply {
+    val f = file("keystore.properties")
+    if (f.exists()) FileInputStream(f).use { load(it) }
 }
 
 android {
@@ -16,13 +25,29 @@ android {
         versionName = "0.4.0"
     }
 
+    signingConfigs {
+        create("release") {
+            val ks = keystoreProps.getProperty("storeFile")
+            if (ks != null) {
+                storeFile = file(ks)
+                storePassword = keystoreProps.getProperty("storePassword")
+                keyAlias = keystoreProps.getProperty("keyAlias")
+                keyPassword = keystoreProps.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            // ponytail: signing dgn debug keystore utk rilis internal/test.
-            // Ganti ke keystore produksi (releaseSigningConfig) sebelum Play Store.
-            signingConfig = signingConfigs.getByName("debug")
+            // ponytail: pakai keystore prod bila keystore.properties ada; else fallback debug
+            // utk rilis internal. Sebelum Play Store, keystore.properties WAJIB ada.
+            signingConfig = if (keystoreProps.getProperty("storeFile") != null) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
     compileOptions {
