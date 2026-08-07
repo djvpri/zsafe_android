@@ -65,7 +65,7 @@ fun ZsafeApp(inboundUrl: String?) {
             startDestination = "home",
             modifier = Modifier.padding(innerPadding),
         ) {
-            composable("home") { DashboardScreen() }
+            composable("home") { DashboardScreen(onScanClick = { navController.navigate("scan") }) }
             composable("scan") { ScanScreen(context = context) }
             composable("link") {
                 // If an inbound URL arrived via Intent, scan it here.

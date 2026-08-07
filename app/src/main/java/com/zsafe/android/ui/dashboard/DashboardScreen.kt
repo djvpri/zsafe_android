@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.sp
 
 /** Dashboard utama — status aman + skor + ringkasan proteksi (desain varian 1). */
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(onScanClick: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -89,7 +89,7 @@ fun DashboardScreen() {
 
         // Scan CTA
         Card(
-            onClick = { /* navigasi ke layar scan */ },
+            onClick = onScanClick,
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier.fillMaxWidth(),
