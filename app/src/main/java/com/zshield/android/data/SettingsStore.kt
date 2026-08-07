@@ -8,7 +8,7 @@ class SettingsStore(context: Context) {
 
     companion object {
         // ponytail: default prod. Custom base URL utk dev/testing di layar Setelan.
-        const val DEFAULT_BASE_URL = "https://api.zshield.app"
+        const val DEFAULT_BASE_URL = "https://zsafebackend-production.up.railway.app"
         private const val KEY_BASE_URL = "backend_url"
     }
 
