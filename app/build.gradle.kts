@@ -20,6 +20,9 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            // ponytail: signing dgn debug keystore utk rilis internal/test.
+            // Ganti ke keystore produksi (releaseSigningConfig) sebelum Play Store.
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
