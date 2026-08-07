@@ -9,10 +9,9 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.material.icons.Icons
@@ -33,12 +32,17 @@ import com.zsafe.android.ui.settings.SettingsScreen
 
 /** Root composable: bottom nav + screens + handles inbound link intent. */
 @Composable
-fun ZsafeApp(inboundUrl: String?) {
+fun ZsafeApp(inboundUrl: State<String?>) {
     val context = LocalContext.current
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    var interceptedUrl by rememberSaveable { mutableStateOf(inboundUrl) }
+
+    // URL inbound baru (share/klik link) -> langsung ke layar Pemeriksaan Link
+    val inboundUrlValue = inboundUrl.value
+    LaunchedEffect(inboundUrlValue) {
+        if (inboundUrlValue != null) navController.navigate("link")
+    }
 
     Scaffold(
         bottomBar = {
@@ -69,7 +73,7 @@ fun ZsafeApp(inboundUrl: String?) {
             composable("scan") { ScanScreen(context = context) }
             composable("link") {
                 // If an inbound URL arrived via Intent, scan it here.
-                LinkCheckScreen(url = interceptedUrl, context = context)
+                LinkCheckScreen(url = inboundUrl.value, context = context)
             }
             composable("settings") {
                 SettingsScreen(store = SettingsStore(context))
