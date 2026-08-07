@@ -1,4 +1,4 @@
-package com.zsafe.android
+package com.zshield.android
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.mutableStateOf
-import com.zsafe.android.ui.ZsafeApp
-import com.zsafe.android.ui.theme.ZsafeTheme
+import com.zshield.android.ui.ZShieldApp
+import com.zshield.android.ui.theme.ZShieldTheme
 
 class MainActivity : ComponentActivity() {
     // URL inbound terbaru (dari VIEW / SEND). State supaya recompose saat onNewIntent.
@@ -18,8 +18,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         inboundUrl.value = extractUrl(intent)
         setContent {
-            ZsafeTheme {
-                ZsafeApp(inboundUrl = inboundUrl)
+            ZShieldTheme {
+                ZShieldApp(inboundUrl = inboundUrl)
             }
         }
     }

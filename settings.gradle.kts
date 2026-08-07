@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Zsafe"
+rootProject.name = "ZShield"
 include(":app")

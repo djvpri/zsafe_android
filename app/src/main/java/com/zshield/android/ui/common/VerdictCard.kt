@@ -1,4 +1,4 @@
-package com.zsafe.android.ui.common
+package com.zshield.android.ui.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.zsafe.android.data.ScanResult
+import com.zshield.android.data.ScanResult
 
 /** Kartu hasil verdict scan — dipakai layar Pindai & Link Check. */
 @Composable

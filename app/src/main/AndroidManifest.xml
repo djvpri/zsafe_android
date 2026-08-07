@@ -7,18 +7,18 @@
     <application
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@style/Theme.Zsafe">
+        android:theme="@style/Theme.ZShield">
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.Zsafe">
+            android:theme="@style/Theme.ZShield">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- Link handler: Zsafe intercepts http/https clicks -->
+            <!-- Link handler: ZShield intercepts http/https clicks -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

@@ -1,4 +1,4 @@
-package com.zsafe.android.data
+package com.zshield.android.data
 
 import android.content.Context
 import org.json.JSONObject

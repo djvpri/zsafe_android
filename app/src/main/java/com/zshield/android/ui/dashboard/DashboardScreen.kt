@@ -1,4 +1,4 @@
-package com.zsafe.android.ui.dashboard
+package com.zshield.android.ui.dashboard
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -45,7 +45,7 @@ fun DashboardScreen(onScanClick: () -> Unit = {}) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Filled.CheckCircle, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
             Text(
-                "Zsafe", style = MaterialTheme.typography.titleLarge,
+                "ZShield", style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 8.dp),
             )
         }

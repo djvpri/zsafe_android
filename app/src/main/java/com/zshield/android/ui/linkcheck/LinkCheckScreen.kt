@@ -1,4 +1,4 @@
-package com.zsafe.android.ui.linkcheck
+package com.zshield.android.ui.linkcheck
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
@@ -21,9 +21,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.zsafe.android.data.ScanRepository
-import com.zsafe.android.data.ScanResult
-import com.zsafe.android.ui.common.VerdictCard
+import com.zshield.android.data.ScanRepository
+import com.zshield.android.data.ScanResult
+import com.zshield.android.ui.common.VerdictCard
 
 /** Layar pemeriksaan link. URL inbound (dari Intent) langsung discan. */
 @Composable

@@ -1,4 +1,4 @@
-package com.zsafe.android.ui
+package com.zshield.android.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -24,15 +24,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.platform.LocalContext
-import com.zsafe.android.data.SettingsStore
-import com.zsafe.android.ui.dashboard.DashboardScreen
-import com.zsafe.android.ui.linkcheck.LinkCheckScreen
-import com.zsafe.android.ui.scan.ScanScreen
-import com.zsafe.android.ui.settings.SettingsScreen
+import com.zshield.android.data.SettingsStore
+import com.zshield.android.ui.dashboard.DashboardScreen
+import com.zshield.android.ui.linkcheck.LinkCheckScreen
+import com.zshield.android.ui.scan.ScanScreen
+import com.zshield.android.ui.settings.SettingsScreen
 
 /** Root composable: bottom nav + screens + handles inbound link intent. */
 @Composable
-fun ZsafeApp(inboundUrl: State<String?>) {
+fun ZShieldApp(inboundUrl: State<String?>) {
     val context = LocalContext.current
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()

@@ -5,15 +5,15 @@ plugins {
 }
 
 android {
-    namespace = "com.zsafe.android"
+    namespace = "com.zshield.android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.zsafe.android"
+        applicationId = "com.zshield.android"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
-        versionName = "0.2.0"
+        versionCode = 3
+        versionName = "0.3.0"
     }
 
     buildTypes {

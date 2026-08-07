@@ -1,4 +1,4 @@
-package com.zsafe.android.ui.settings
+package com.zshield.android.ui.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,9 +20,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.zsafe.android.data.SettingsStore
+import com.zshield.android.data.SettingsStore
 
-/** Layar Setelan — atur URL backend Zsafe. Tanpa auto-connect (manual save). */
+/** Layar Setelan — atur URL backend ZShield. Tanpa auto-connect (manual save). */
 @Composable
 fun SettingsScreen(store: SettingsStore) {
     val storeBase = remember(store) { store.baseUrl }
@@ -35,7 +35,7 @@ fun SettingsScreen(store: SettingsStore) {
             Spacer(Modifier.height(20.dp))
 
             Text(
-                "URL Backend Zsafe",
+                "URL Backend ZShield",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
             )

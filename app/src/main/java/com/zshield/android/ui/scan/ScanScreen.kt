@@ -1,4 +1,4 @@
-package com.zsafe.android.ui.scan
+package com.zshield.android.ui.scan
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
@@ -22,9 +22,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.zsafe.android.data.ScanRepository
-import com.zsafe.android.data.ScanResult
-import com.zsafe.android.ui.common.VerdictCard
+import com.zshield.android.data.ScanRepository
+import com.zshield.android.data.ScanResult
+import com.zshield.android.ui.common.VerdictCard
 
 /** Layar Pindai — input URL manual lalu scan ke backend. */
 @Composable
