@@ -1,5 +1,6 @@
 package com.zsafe.android.ui.linkcheck
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +26,7 @@ import com.zsafe.android.data.ScanResult
 
 /** Layar pemeriksaan link. URL inbound (dari Intent) langsung discan. */
 @Composable
-fun LinkCheckScreen(url: String?) {
+fun LinkCheckScreen(url: String?, context: Context) {
     var result by remember { mutableStateOf<ScanResult?>(null) }
     var loading by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
@@ -34,7 +35,7 @@ fun LinkCheckScreen(url: String?) {
     fun scan(target: String) {
         loading = true
         error = null
-        result = runCatching { ScanRepository().scanUrl(target) }
+        result = runCatching { ScanRepository(context).scanUrl(target) }
             .onFailure { error = it.message }
             .getOrNull()
         loading = false

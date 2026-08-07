@@ -23,12 +23,16 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.platform.LocalContext
+import com.zsafe.android.data.SettingsStore
 import com.zsafe.android.ui.dashboard.DashboardScreen
 import com.zsafe.android.ui.linkcheck.LinkCheckScreen
+import com.zsafe.android.ui.settings.SettingsScreen
 
 /** Root composable: bottom nav + screens + handles inbound link intent. */
 @Composable
 fun ZsafeApp(inboundUrl: String?) {
+    val context = LocalContext.current
     val navController = rememberNavController()
     var interceptedUrl by rememberSaveable { mutableStateOf(inboundUrl) }
 
@@ -61,9 +65,11 @@ fun ZsafeApp(inboundUrl: String?) {
             composable("scan") { Text("Layar pindai — WIP") }
             composable("link") {
                 // If an inbound URL arrived via Intent, scan it here.
-                LinkCheckScreen(url = interceptedUrl)
+                LinkCheckScreen(url = interceptedUrl, context = context)
             }
-            composable("settings") { Text("Layar setelan — WIP") }
+            composable("settings") {
+                SettingsScreen(store = SettingsStore(context))
+            }
         }
     }
 }

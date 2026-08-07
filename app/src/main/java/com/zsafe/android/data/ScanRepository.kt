@@ -1,5 +1,6 @@
 package com.zsafe.android.data
 
+import android.content.Context
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -11,9 +12,9 @@ data class ScanResult(
     val host: String?,
 )
 
-class ScanRepository(
-    private val baseUrl: String = "https://api.zsafe.app",
-) {
+class ScanRepository(context: Context) {
+    private val baseUrl = SettingsStore(context).baseUrl
+
     fun scanUrl(url: String): ScanResult {
         val conn = URL("$baseUrl/api/scan/url").openConnection() as HttpURLConnection
         try {
